@@ -37,20 +37,35 @@
       {
         "id": "women",
         "title": "Women's photography",
-        "price": "150 BYN",
-        "includes": ["1–2 hours shooting", "15 retouched photos", "2 locations", "Delivery in 7 days"]
+        "price": "40 BYN",
+        "includes": [
+          "1–2 hours shooting",
+          "15 retouched photos",
+          "1 location",
+          "Delivery in 7 days"
+        ]
       },
       {
         "id": "couples",
         "title": "Couples session",
-        "price": "200 BYN",
-        "includes": ["2 hours shooting", "20 retouched photos", "Styling guidance", "Delivery in 10 days"]
+        "price": "50 BYN",
+        "includes": [
+          "2 hours shooting",
+          "20 retouched photos",
+          "Styling guidance",
+          "Delivery in 10 days"
+        ]
       },
       {
         "id": "family",
         "title": "Family session",
-        "price": "220 BYN",
-        "includes": ["2 hours shooting", "25 retouched photos", "Multiple locations", "Delivery in 10 days"]
+        "price": "60 BYN",
+        "includes": [
+          "2 hours shooting",
+          "25 retouched photos",
+          "Multiple locations",
+          "Delivery in 10 days"
+        ]
       }
     ]
   },
