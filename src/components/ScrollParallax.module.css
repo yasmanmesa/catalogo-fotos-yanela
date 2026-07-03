@@ -1,0 +1,73 @@
+.wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.layerBack,
+.layerMid,
+.layerFront {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.layerBack {
+  background: linear-gradient(165deg, #efe9e1 0%, #f8f6f3 45%, #e8e0d4 100%);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.layerMid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.frameGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: min(90vw, 36rem);
+  aspect-ratio: 4 / 3;
+}
+
+.frameCell {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(145deg, #d6cfc4, #c4b8a8);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.frameActive {
+  box-shadow: 0 8px 32px rgba(154, 52, 18, 0.2);
+  outline: 2px solid rgba(154, 52, 18, 0.35);
+}
+
+.layerFront .vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, transparent 30%, rgba(248, 246, 243, 0.7) 85%);
+}
+
+@media (max-width: 640px) {
+  .frameGrid {
+    grid-template-columns: repeat(3, 1fr);
+    width: min(92vw, 22rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layerBack,
+  .layerMid,
+  .layerFront {
+    transform: none !important;
+  }
+}

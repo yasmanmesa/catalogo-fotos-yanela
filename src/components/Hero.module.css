@@ -1,0 +1,57 @@
+.motionZone {
+  position: relative;
+  min-height: 180vh;
+}
+
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-h) + 2rem);
+  padding-bottom: 4rem;
+}
+
+.content {
+  max-width: 40rem;
+}
+
+.subtitle {
+  margin: 1.25rem 0 2rem;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: var(--color-text-muted);
+  max-width: 32rem;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.spacer {
+  height: 80vh;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .motionZone {
+    min-height: 140vh;
+  }
+
+  .spacer {
+    height: 40vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motionZone {
+    min-height: auto;
+  }
+
+  .spacer {
+    display: none;
+  }
+}

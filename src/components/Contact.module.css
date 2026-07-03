@@ -1,0 +1,18 @@
+.section {
+  background: var(--color-bg);
+}
+
+.inner {
+  text-align: center;
+}
+
+.inner .section-header {
+  margin-inline: auto;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}

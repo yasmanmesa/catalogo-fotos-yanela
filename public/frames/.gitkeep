@@ -1,0 +1,8 @@
+Coloca aquí los fotogramas exportados externamente (ffmpeg, DaVinci, etc.).
+
+Nomenclatura sugerida:
+- frame-001.webp
+- frame-002.webp
+- …
+
+El componente ScrollParallax puede actualizarse para cargar estas imágenes reales.

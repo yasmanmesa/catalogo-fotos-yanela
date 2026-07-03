@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "Yanela Hernández — Photographer · Belarus",
+    "description": "Individual portraits, couples, corporate and events. Photo sessions for women in Belarus."
+  },
+  "nav": {
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "process": "Process",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Your session. Your story. Your light.",
+    "subtitle": "Individual portraits, couples, corporate & events · Belarus",
+    "ctaInstagram": "Instagram",
+    "ctaViber": "Viber",
+    "ctaPortfolio": "View work"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "A curated selection by session type",
+    "empty": "Photos coming soon",
+    "categories": {
+      "women": "Women's portraits",
+      "couples": "Couples",
+      "corporate": "Corporate",
+      "events": "Events"
+    }
+  },
+  "services": {
+    "title": "Services & pricing",
+    "subtitle": "Transparent packages — pick your session type",
+    "from": "from",
+    "cta": "Book now",
+    "items": [
+      {
+        "id": "women",
+        "title": "Individual session",
+        "price": "150 BYN",
+        "includes": ["1–2 hours shooting", "15 retouched photos", "2 locations", "Delivery in 7 days"]
+      },
+      {
+        "id": "couples",
+        "title": "Couples session",
+        "price": "200 BYN",
+        "includes": ["2 hours shooting", "20 retouched photos", "Styling guidance", "Delivery in 10 days"]
+      },
+      {
+        "id": "corporate",
+        "title": "Corporate portrait",
+        "price": "120 BYN",
+        "includes": ["45 minutes", "10 retouched photos", "Business or lifestyle look", "Delivery in 5 days"]
+      },
+      {
+        "id": "events",
+        "title": "Events",
+        "price": "250 BYN",
+        "includes": ["Up to 3 hours", "50+ retouched photos", "Reportage style", "Delivery in 14 days"]
+      }
+    ]
+  },
+  "process": {
+    "title": "How it works",
+    "steps": [
+      {
+        "title": "Reach out",
+        "description": "Instagram or Viber — we'll discuss your idea, date and session type."
+      },
+      {
+        "title": "The shoot",
+        "description": "A relaxed atmosphere with posing and styling guidance."
+      },
+      {
+        "title": "Your photos",
+        "description": "Selected and edited images delivered within the agreed timeframe."
+      }
+    ]
+  },
+  "about": {
+    "title": "About me",
+    "p1": "I'm Yanela, a photographer based in Belarus. I photograph women the way they want to see themselves — natural, confident and beautiful.",
+    "p2": "Individual portraits are my focus, but I also work with couples, corporate clients and events. Every session is a story we create together.",
+    "instagram": "@yanela_her.ph"
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      {
+        "question": "How much does a session cost?",
+        "answer": "Prices are listed under Services. Cost depends on session type and duration."
+      },
+      {
+        "question": "How do I book?",
+        "answer": "Message me on Instagram or Viber — we'll discuss date, location and format."
+      },
+      {
+        "question": "How long until I receive my photos?",
+        "answer": "Between 5 and 14 days depending on the package. We'll agree on timing upfront."
+      },
+      {
+        "question": "What should I bring?",
+        "answer": "1–2 outfit options and comfortable shoes. Makeup is optional — I can recommend a MUA."
+      },
+      {
+        "question": "Where do sessions take place?",
+        "answer": "Studio, urban locations or nature across Belarus. We'll choose together."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Write to me — let's plan your session",
+    "instagram": "Message on Instagram",
+    "viber": "Message on Viber"
+  },
+  "footer": {
+    "rights": "© Yanela Hernández. All rights reserved."
+  },
+  "lang": {
+    "label": "Language"
+  }
+}

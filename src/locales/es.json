@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "Yanela Hernández — Fotógrafa · Bielorrusia",
+    "description": "Retratos individuales, parejas, corporativo y eventos. Sesiones fotográficas para mujeres en Bielorrusia."
+  },
+  "nav": {
+    "portfolio": "Portfolio",
+    "services": "Servicios",
+    "process": "Proceso",
+    "about": "Sobre mí",
+    "faq": "FAQ",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Tu sesión. Tu historia. Tu luz.",
+    "subtitle": "Retratos individuales, parejas, corporativo y eventos · Bielorrusia",
+    "ctaInstagram": "Instagram",
+    "ctaViber": "Viber",
+    "ctaPortfolio": "Ver trabajos"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Selección de trabajos por tipo de sesión",
+    "empty": "Próximamente fotos aquí",
+    "categories": {
+      "women": "Retratos femeninos",
+      "couples": "Parejas",
+      "corporate": "Corporativo",
+      "events": "Eventos"
+    }
+  },
+  "services": {
+    "title": "Servicios y precios",
+    "subtitle": "Paquetes transparentes — elige tu tipo de sesión",
+    "from": "desde",
+    "cta": "Reservar",
+    "items": [
+      {
+        "id": "women",
+        "title": "Sesión individual",
+        "price": "150 BYN",
+        "includes": ["1–2 h de sesión", "15 fotos editadas", "2 locaciones", "Entrega en 7 días"]
+      },
+      {
+        "id": "couples",
+        "title": "Sesión en pareja",
+        "price": "200 BYN",
+        "includes": ["2 h de sesión", "20 fotos editadas", "Ayuda con estilo", "Entrega en 10 días"]
+      },
+      {
+        "id": "corporate",
+        "title": "Retrato corporativo",
+        "price": "120 BYN",
+        "includes": ["45 minutos", "10 fotos editadas", "Estilo business o lifestyle", "Entrega en 5 días"]
+      },
+      {
+        "id": "events",
+        "title": "Eventos",
+        "price": "250 BYN",
+        "includes": ["Hasta 3 horas", "50+ fotos editadas", "Estilo reportaje", "Entrega en 14 días"]
+      }
+    ]
+  },
+  "process": {
+    "title": "Cómo funciona",
+    "steps": [
+      {
+        "title": "Escríbeme",
+        "description": "Instagram o Viber — hablamos de la idea, fecha y tipo de sesión."
+      },
+      {
+        "title": "La sesión",
+        "description": "Ambiente tranquilo, ayuda con poses y estilo."
+      },
+      {
+        "title": "Tus fotos",
+        "description": "Imágenes seleccionadas y editadas en el plazo acordado."
+      }
+    ]
+  },
+  "about": {
+    "title": "Sobre mí",
+    "p1": "Soy Yanela, fotógrafa en Bielorrusia. Fotografío a mujeres como quieren verse — natural, seguras y bellas.",
+    "p2": "Me enfoco en retratos individuales, pero también trabajo con parejas, clientes corporativos y eventos. Cada sesión es una historia que creamos juntas.",
+    "instagram": "@yanela_her.ph"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Cuánto cuesta una sesión?",
+        "answer": "Los precios están en Servicios. Depende del tipo de sesión y duración."
+      },
+      {
+        "question": "¿Cómo reservo?",
+        "answer": "Escríbeme por Instagram o Viber — acordamos fecha, locación y formato."
+      },
+      {
+        "question": "¿Cuánto tardan las fotos?",
+        "answer": "Entre 5 y 14 días según el paquete. Lo acordamos de antemano."
+      },
+      {
+        "question": "¿Qué debo llevar?",
+        "answer": "1–2 outfits y calzado cómodo. Maquillaje opcional — puedo recomendar MUA."
+      },
+      {
+        "question": "¿Dónde son las sesiones?",
+        "answer": "Estudio, exteriores urbanos o naturaleza en Bielorrusia. Elegimos juntas."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Escríbeme — planificamos tu sesión",
+    "instagram": "Escribir en Instagram",
+    "viber": "Escribir en Viber"
+  },
+  "footer": {
+    "rights": "© Yanela Hernández. Todos los derechos reservados."
+  },
+  "lang": {
+    "label": "Idioma"
+  }
+}
