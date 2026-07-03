@@ -35,12 +35,13 @@ Construir una **landing page de una sola página** que funcione como catálogo/p
 | Tráfico esperado | Instagram bio → web | ✅ |
 | CTA principal | **Instagram DM** + **Viber** (no WhatsApp) | ✅ |
 | Precios | **Visibles** en la sección servicios | ✅ |
-| Tono visual | **Minimalista claro** + elemento distintivo en hero | ✅ |
-| Hero distintivo | **Parallax con secuencia de fotogramas** (video → frames) | ✅ |
+| Tono visual | **Minimalista claro** + acento visual con motion | ✅ |
+| Efecto parallax | **Scroll-driven**, puede atravesar varias secciones (no solo `#hero`) | ✅ |
+| Assets de motion | Secuencia de fotogramas preparada **fuera del repo** (herramientas externas) | ✅ |
 | Portfolio | **Galería con categorías** ordenadas por prioridad | ✅ |
 | Idioma por defecto | **Ruso (RU)** | ✅ |
 | Idiomas disponibles | Ruso · Inglés · Español (selector en header) | ✅ |
-| Stack técnico | Sitio estático en este repo (HTML/CSS/JS o Astro) | ✅ propuesto |
+| Stack técnico | **Astro** + deploy en **Vercel** | ✅ |
 
 > **Contexto Bielorrusia:** WhatsApp no es el canal habitual. Instagram ya existe (@yanela_her.ph); Viber es el complemento natural para contacto directo.
 
@@ -72,7 +73,8 @@ Yanela trabaja con **varios tipos de sesión**. El sitio **no debe presentar un 
 │  HEADER (sticky)                                         │
 │  Logo · Nav · [RU | EN | ES] · [Instagram / Viber]       │
 ├──────────────────────────────────────────────────────────┤
-│  #hero        Parallax de fotogramas + copy + CTA        │
+│  #hero        Copy + CTA (inicio del recorrido visual)   │
+│  … scroll …   Capas parallax / secuencia de frames       │
 │  #portfolio   Galería por categoría (orden priorizado)   │
 │  #servicios   Tipos de sesión + precios visibles         │
 │  #proceso     Cómo funciona (3 pasos)                    │
@@ -87,41 +89,60 @@ Yanela trabaja con **varios tipos de sesión**. El sitio **no debe presentar un 
 
 ### 3.1 Detalle por sección
 
-#### `#hero` — Parallax de fotogramas ✅ definido
+#### `#hero` y capas de motion (parallax)
 
-El hero es el **elemento que llama la atención** dentro de un diseño minimalista claro. No foto estática: una secuencia cinematográfica.
+El acento visual **no vive solo en `#hero`**: el parallax y/o la secuencia de fotogramas pueden **continuar mientras el usuario hace scroll** por la parte superior de la página (hero → transición hacia portfolio), creando profundidad sin encerrar el efecto en una única sección.
 
 | Elemento | Contenido | Notas |
 |----------|-----------|-------|
-| Visual principal | Video de Yanela **descompuesto en fotogramas** | Scroll → parallax entre frames |
-| Efecto | Parallax horizontal o vertical al hacer scroll | Sensación de movimiento sin autoplay pesado |
-| Titular | Marca personal / beneficio emocional | Genérico al estilo, no atado a un solo tipo de sesión — copy TBD |
-| Subtítulo | Tipos de sesión + ubicación | Ej: *«Фотосессии для женщин, пар, событий и бизнеса · Беларусь»* — orden priorizado, tono inclusivo |
-| CTA primario | Escribir en Instagram | Enlace directo al perfil o DM |
-| CTA secundario | Viber | Segundo botón, mismo peso visual |
-| Fallback | Foto estática o primer fotograma | Si `prefers-reduced-motion` o conexión lenta |
-| Copy | Traducido en RU / EN / ES | Ver sección 4.4 |
+| `#hero` | Titular, subtítulo, CTAs | Copy + conversión; el motion es capa aparte |
+| Capas parallax | Imágenes/frames a distintas velocidades | Pueden superponerse al hero y extenderse al scroll siguiente |
+| Secuencia de frames | Fotogramas exportados **externamente** | El sitio solo **consume** los assets ya optimizados |
+| Efecto | Scroll-driven: parallax + cambio de frame según posición | No autoplay de video embebido |
+| Titular | Marca personal / beneficio emocional | Genérico al estilo — copy TBD |
+| Subtítulo | Tipos de sesión + ubicación | Orden priorizado, tono inclusivo |
+| CTA primario | Instagram | Enlace al perfil o DM |
+| CTA secundario | Viber | Mismo peso visual |
+| Fallback | Primer fotograma estático | `prefers-reduced-motion` o conexión lenta |
+| Copy | RU / EN / ES | Ver § 4.5 |
 
-**Concepto técnico (borrador):**
+**Flujo de assets (fuera del código del sitio):**
 
 ```
-Video corto de Yanela (5–15 s)
+Video corto (5–15 s) — grabado/planificado aparte
         ↓
-Extraer N fotogramas (ej. 12–24 frames)
+Herramienta externa → exportar N fotogramas (12–24)
         ↓
-Optimizar como WebP/JPEG secuencia
+Optimizar peso (WebP/JPEG) — Squoosh, TinyPNG, etc.
         ↓
-Al scroll: cambiar frame visible + desplazamiento parallax
+Copiar a public/frames/ (o similar) en el repo
         ↓
-Mobile: versión simplificada (menos frames, sin parallax agresivo)
+El sitio referencia las imágenes; no genera frames en build
 ```
 
-**Ventajas de frames vs video embebido:**
-- Mejor control de peso y LCP (cargar solo frames necesarios).
-- Funciona con `prefers-reduced-motion` (mostrar 1 frame fijo).
-- Encaja con estética editorial/minimal: la secuencia es el acento, el resto queda limpio.
+**Herramientas sugeridas para extraer fotogramas** (elige una; no va en el código):
 
-**Pendiente:** Video/fotogramas de Yanela. Hasta entonces: placeholder con grid de rects neutros simulando la secuencia.
+| Herramienta | Tipo | Notas |
+|-------------|------|-------|
+| **ffmpeg** (CLI) | Gratis, local | `ffmpeg -i video.mp4 -vf "select=..." frames/frame_%03d.webp` — manual |
+| **DaVinci Resolve** | Gratis / desktop | Export → imagen secuencia |
+| **Adobe Premiere / AE** | De pago | Export PNG/JPEG sequence |
+| **Kapwing** / **Ezgif** | Web | Útil si no quieres instalar nada |
+| **HandBrake** + ffmpeg | Gratis | Extraer y luego convertir frames |
+
+**Optimización post-exporte:** [Squoosh](https://squoosh.app), TinyPNG, o ImageOptim antes de subir al repo.
+
+**Ventajas de frames preparados fuera del repo:**
+- El build de Vercel no depende de ffmpeg ni de procesar video.
+- Yanela o un editor puede preparar la secuencia sin tocar código.
+- Control total de calidad/peso antes de publicar.
+
+**Implementación en el sitio (solo consumo):**
+- Scroll listener o **Scroll-driven animations** (CSS) / GSAP ScrollTrigger (isla Astro).
+- Mapear progreso de scroll → índice de frame + offsets parallax por capa.
+- Mobile: menos capas, parallax suavizado o desactivado.
+
+**Pendiente:** Video + export de frames (tarea de contenido, no de desarrollo). Placeholder: grid neutro simulando secuencia.
 
 ---
 
@@ -230,15 +251,15 @@ Ejemplo de estructura (placeholder):
 | **Texto** | Negro suave o gris oscuro; jerarquía clara |
 | **Acento** | 1 color de marca (TBD en DESIGN.md) — botones, links, detalles |
 | **Fotos** | Protagonistas; sin marcos pesados ni overlays que compitan |
-| **Hero** | Único punto de dramatismo: parallax de fotogramas a ancho completo |
+| **Motion** | Parallax / frames en zona superior de la página; el resto minimal |
 
-**Principio:** El 90% del sitio respira en silencio; el 10% (hero) captura la atención.
+**Principio:** La UI base respira en silencio; el motion (parallax + frames) aporta el acento visual **a lo largo del scroll inicial**, no necesariamente encerrado en un solo bloque.
 
 ### 4.2 Diseño flexible (sin fotos aún)
 
 1. **Tokens CSS** para paleta — cambiar en un solo lugar cuando tengamos fotos finales.
 2. **Placeholders** con `aspect-ratio` real para evitar saltos de layout.
-3. **Hero placeholder:** grid de celdas simulando frames hasta tener el video.
+3. **Placeholder de motion:** grid de celdas simulando frames hasta tener assets exportados.
 
 ```css
 :root {
@@ -253,15 +274,18 @@ Ejemplo de estructura (placeholder):
 }
 ```
 
-### 4.3 Criterios técnicos del hero parallax
+### 4.3 Parallax y scroll-driven motion
 
 | Criterio | Enfoque |
 |----------|---------|
-| Performance | Frames WebP, lazy load de secuencia, LCP con primer frame |
-| Accesibilidad | `prefers-reduced-motion: reduce` → frame estático |
-| Mobile | Parallax suavizado o desactivado; menos frames |
-| Peso total | Objetivo < 500 KB para secuencia completa (comprimida) |
+| Alcance | Puede cruzar **hero + zona de transición** hacia portfolio; no limitado a `#hero` |
+| Capas | 2–3 capas con distinta velocidad (frames, fondo, texto) |
+| Performance | Frames WebP pre-exportados; lazy load; LCP = primer frame |
+| Accesibilidad | `prefers-reduced-motion: reduce` → frame estático, sin parallax |
+| Mobile | Menos capas/frames; parallax suavizado o off |
+| Peso assets | Objetivo < 500 KB secuencia completa (comprimida **antes** de subir al repo) |
 | Fallback | `<img>` del frame 1 si JS deshabilitado |
+| Build | **Sin** ffmpeg ni pipeline de video en el repositorio |
 
 ### 4.4 Internacionalización (i18n)
 
@@ -340,10 +364,10 @@ Crear **`DESIGN.md`** antes de implementar la UI. Contenido mínimo:
 
 | Sección | Valor inicial |
 |---------|---------------|
-| **Dirección estética** | Minimalista claro + hero parallax frames |
+| **Dirección estética** | Minimalista claro + scroll-driven parallax / frames |
 | **Paleta** | Neutros claros + 1 acento TBD |
 | **Tipografía** | Display elegante + body legible (TBD) |
-| **Hero parallax** | Specs: N frames, dirección scroll, easing, mobile behavior |
+| **Parallax / motion** | Capas, tramo de scroll, N frames, mobile, reduced-motion |
 | **Componentes** | Botones IG/Viber, **tabs/filtros portfolio**, tarjetas servicio por tipo, acordeón FAQ, lightbox, selector RU/EN/ES |
 | **i18n** | Comportamiento del switcher, estados activo/inactivo, mobile |
 | **Imágenes** | Ratio retrato 3:4 / 4:5 predominante |
@@ -376,14 +400,14 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 - [ ] Proceso y plazos de entrega
 - [ ] FAQ con respuestas reales
 - [ ] Número de Viber para deep link
-- [ ] Video corto para extraer fotogramas del hero
+- [ ] Video corto + export de fotogramas (**herramienta externa**, ver § 3.1)
 - [ ] 12–20 fotos para galería MVP (repartidas por categoría)
 - [ ] Foto de perfil para `#sobre-mi`
 - [ ] Testimonios (fase posterior)
 
 ### Pendiente técnico
-- [ ] Dominio propio vs URL de hosting
-- [ ] Hosting (Vercel / Netlify / Cloudflare Pages)
+- [ ] Dominio propio vs URL de Vercel (`*.vercel.app`)
+- [ ] Conectar repo GitHub → Vercel (deploy automático)
 - [ ] Analytics (opcional)
 
 ---
@@ -397,11 +421,12 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 - [ ] Número Viber
 
 ### Fase 1 — Scaffold + diseño base
+- [ ] Inicializar proyecto **Astro** + adapter Vercel
 - [ ] Crear `DESIGN.md` con tokens provisionales (minimal claro)
-- [ ] Estructura HTML secciones + nav anclas
-- [ ] Hero: placeholder de secuencia de frames + lógica parallax base
+- [ ] Estructura secciones + nav anclas
+- [ ] Capas parallax / placeholder de frames (consumo de assets estáticos)
 - [ ] Header sticky: selector **RU | EN | ES** + botones IG / Viber
-- [ ] Archivos `locales/ru.json`, `en.json`, `es.json` + capa i18n
+- [ ] Archivos `locales/ru.json`, `en.json`, `es.json` + i18n
 - [ ] Responsive mobile-first
 
 ### Fase 2 — Galería e interacción
@@ -411,13 +436,13 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 - [ ] Lazy loading
 - [ ] Sustituir placeholders por fotos reales
 
-### Fase 3 — Hero final + conversión
-- [ ] Procesar video → fotogramas optimizados
-- [ ] Parallax pulido (desktop + mobile + reduced-motion)
+### Fase 3 — Motion final + conversión
+- [ ] Importar secuencia de frames (exportada externamente) a `public/`
+- [ ] Parallax scroll-driven pulido (desktop + mobile + reduced-motion)
 - [ ] Tarjetas de servicios por tipo con precios
 - [ ] FAQ acordeón
-- [ ] SEO básico + OG tags por idioma (`lang`, title, description)
-- [ ] Deploy
+- [ ] SEO básico + OG tags por idioma
+- [ ] Deploy en Vercel (push a `main`)
 
 ### Fase 4 — Evolución (post-MVP)
 - [ ] Paleta final en DESIGN.md según fotos
@@ -426,17 +451,59 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 
 ---
 
-## 8. Stack técnico
+## 8. Stack técnico (Vercel)
 
-| Capa | Propuesta | Motivo |
-|------|-----------|--------|
-| Markup | HTML semántico o Astro | Rápido, estático, SEO |
-| Estilos | CSS variables (tokens) | Paleta intercambiable |
-| JS | Nav, parallax hero, lightbox, FAQ, **i18n switcher** | Mínimo, sin framework |
-| i18n | JSON locales (`ru`, `en`, `es`) + `data-i18n` o Astro i18n | RU por defecto |
-| Hero frames | Script build (ffmpeg) → WebP | Optimización en CI o manual |
-| Imágenes | Sharp / srcset / lazy | Performance |
-| Deploy | Vercel / Netlify / Cloudflare | Push-to-deploy |
+### Recomendación: **Astro**
+
+Para esta landing (estática, muchas imágenes, poco JS, i18n, deploy en Vercel), **Astro** es la mejor opción:
+
+| Ventaja | Por qué importa aquí |
+|---------|----------------------|
+| **Static-first** | HTML estático por defecto → carga rápida en móvil/Instagram |
+| **Deploy nativo en Vercel** | `@astrojs/vercel` o export estático; push a GitHub = preview + producción |
+| **Islas de interactividad** | Solo hidratar lo necesario: lightbox, i18n, parallax (React/Vue/Svelte opcional) |
+| **Imágenes** | Integración con `<Image />`, srcset, formatos modernos |
+| **i18n** | Rutas `/`, `/en`, `/es` o cliente con JSON — flexible |
+| **Bajo overhead** | Menos complejidad que un framework full-stack para una sola página |
+
+**Flujo de deploy:**
+
+```
+GitHub (este repo)  →  Vercel conectado al repo  →  build Astro  →  URL .vercel.app (+ dominio custom)
+```
+
+### Stack concreto
+
+| Capa | Elección | Motivo |
+|------|----------|--------|
+| Framework | **Astro 5** | Landing estática optimizada |
+| Deploy | **Vercel** | Integración directa, previews por PR, CDN global |
+| Estilos | CSS con variables (tokens) | Paleta intercambiable |
+| Interactividad | Astro islands (vanilla o Preact) | Parallax, lightbox, FAQ, i18n switcher |
+| i18n | JSON en `src/locales/` + util cliente o `@astrojs/i18n` | RU por defecto |
+| Motion assets | Carpeta `public/frames/` — **archivos subidos a mano** | Sin ffmpeg en build |
+| Imágenes galería | `public/` o Astro `<Image />` + Sharp en build | WebP, lazy load |
+| Repo | GitHub → Vercel | CI/CD automático |
+
+### Alternativa: **Next.js**
+
+También funciona muy bien en Vercel (es de la misma empresa). Tiene sentido si más adelante necesitas backend, API routes o muchas páginas dinámicas. Para el MVP actual es **más de lo necesario**; Astro es más ligero.
+
+### No recomendado para MVP
+
+| Opción | Motivo |
+|--------|--------|
+| HTML plano sin build | i18n, componentes y optimización de imágenes más manuales |
+| SaaS (Pixieset, etc.) | Menos control del parallax custom y del repo |
+| Pipeline ffmpeg en CI | Complejidad innecesaria; frames se preparan fuera |
+
+### Comandos de referencia (cuando arranquemos)
+
+```bash
+npm create astro@latest . -- --template minimal
+npx astro add vercel
+git push   # Vercel despliega automáticamente si el repo está conectado
+```
 
 ---
 
@@ -445,7 +512,7 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 1. **¿Moneda y precios?** Cifras por tipo de sesión (mujeres, parejas, corporativo, eventos).
 2. **¿Número de Viber** para el enlace de contacto?
 3. **¿Dominio propio** o URL temporal del hosting?
-4. **¿Tienes ya un video** usable para el hero, o lo grabamos/planificamos?
+4. **¿Tienes ya un video** para exportar frames externamente, o lo planificamos?
 5. **¿Quién redacta/revisa** las traducciones EN y ES? (Yanela, tú, ambos)
 
 ---
@@ -456,7 +523,7 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 |----------|------|
 | Mensaje claro | Tipos de sesión y estilo identificables en < 5 s |
 | Priorización | Mujeres primero en portfolio/servicios; resto visible sin exclusión |
-| Hero memorable | Parallax de frames funcional y performante |
+| Hero memorable | Parallax / frames scroll-driven, performante |
 | Precios visibles | Precio por tipo de sesión en `#servicios` |
 | Contacto local | Instagram + Viber, sin fricción |
 | Mobile usable | Hero, galería y CTAs en touch |
@@ -469,7 +536,7 @@ Plan.md ✅  →  DESIGN.md (siguiente)  →  Implementación
 ## 11. Próximo paso
 
 1. **Responder preguntas abiertas** (precios, Viber, dominio, video, traducciones).
-2. **Crear `DESIGN.md`** con dirección minimal clara + spec del hero parallax + selector de idioma.
-3. **Scaffold** de la landing con placeholders, `locales/` y i18n hasta tener fotos y video.
+2. **Crear `DESIGN.md`** con spec de parallax multi-sección + selector de idioma.
+3. **Scaffold Astro** + deploy Vercel con placeholders hasta fotos y frames.
 
 Cuando quieras, seguimos con paquetes y copy en ruso, o pasamos directo a `DESIGN.md`.
