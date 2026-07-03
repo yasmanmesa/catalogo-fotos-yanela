@@ -6,7 +6,7 @@ import { PORTFOLIO_PLACEHOLDERS } from "@/lib/constants";
 import type { PortfolioCategory } from "@/lib/types";
 import styles from "./Portfolio.module.css";
 
-const CATEGORIES: PortfolioCategory[] = ["women", "couples", "corporate", "events"];
+const CATEGORIES: PortfolioCategory[] = ["women", "couples", "family"];
 
 export function Portfolio() {
   const { t } = useLocale();

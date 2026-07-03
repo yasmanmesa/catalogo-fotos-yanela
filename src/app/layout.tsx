@@ -6,10 +6,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Yanela Hernández — фотограф · Беларусь",
   description:
-    "Индивидуальные портреты, пары, корпоратив и мероприятия. Фотосессии для женщин в Беларуси.",
+    "Фотосессии для женщин, пар и семей. Фотограф в Беларуси.",
   openGraph: {
-    title: "Yanela Hernández — Photographer",
-    description: "Individual portraits, couples, corporate & events · Belarus",
+    title: "Yanela Hernández — Photography",
+    description: "Photography for women, couples & families · Belarus",
     type: "website",
   },
 };

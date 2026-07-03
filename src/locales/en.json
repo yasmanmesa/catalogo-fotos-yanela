@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Yanela Hernández — Photographer · Belarus",
-    "description": "Individual portraits, couples, corporate and events. Photo sessions for women in Belarus."
+    "description": "Photography for women, couples and families. Photographer in Belarus."
   },
   "nav": {
     "portfolio": "Portfolio",
@@ -13,7 +13,7 @@
   },
   "hero": {
     "title": "Your session. Your story. Your light.",
-    "subtitle": "Individual portraits, couples, corporate & events · Belarus",
+    "subtitle": "Photography for women, couples & families · Belarus",
     "ctaInstagram": "Instagram",
     "ctaViber": "Viber",
     "ctaPortfolio": "View work"
@@ -23,10 +23,9 @@
     "subtitle": "A curated selection by session type",
     "empty": "Photos coming soon",
     "categories": {
-      "women": "Women's portraits",
+      "women": "Women",
       "couples": "Couples",
-      "corporate": "Corporate",
-      "events": "Events"
+      "family": "Family"
     }
   },
   "services": {
@@ -37,7 +36,7 @@
     "items": [
       {
         "id": "women",
-        "title": "Individual session",
+        "title": "Women's photography",
         "price": "150 BYN",
         "includes": ["1–2 hours shooting", "15 retouched photos", "2 locations", "Delivery in 7 days"]
       },
@@ -48,16 +47,10 @@
         "includes": ["2 hours shooting", "20 retouched photos", "Styling guidance", "Delivery in 10 days"]
       },
       {
-        "id": "corporate",
-        "title": "Corporate portrait",
-        "price": "120 BYN",
-        "includes": ["45 minutes", "10 retouched photos", "Business or lifestyle look", "Delivery in 5 days"]
-      },
-      {
-        "id": "events",
-        "title": "Events",
-        "price": "250 BYN",
-        "includes": ["Up to 3 hours", "50+ retouched photos", "Reportage style", "Delivery in 14 days"]
+        "id": "family",
+        "title": "Family session",
+        "price": "220 BYN",
+        "includes": ["2 hours shooting", "25 retouched photos", "Multiple locations", "Delivery in 10 days"]
       }
     ]
   },
@@ -81,7 +74,7 @@
   "about": {
     "title": "About me",
     "p1": "I'm Yanela, a photographer based in Belarus. I photograph women the way they want to see themselves — natural, confident and beautiful.",
-    "p2": "Individual portraits are my focus, but I also work with couples, corporate clients and events. Every session is a story we create together.",
+    "p2": "I work with women's sessions, couples and families. Every shoot is a story we create together.",
     "instagram": "@yanela_her.ph"
   },
   "faq": {
@@ -97,7 +90,7 @@
       },
       {
         "question": "How long until I receive my photos?",
-        "answer": "Between 5 and 14 days depending on the package. We'll agree on timing upfront."
+        "answer": "Between 7 and 10 days depending on the package. We'll agree on timing upfront."
       },
       {
         "question": "What should I bring?",

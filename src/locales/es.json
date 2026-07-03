@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Yanela Hernández — Fotógrafa · Bielorrusia",
-    "description": "Retratos individuales, parejas, corporativo y eventos. Sesiones fotográficas para mujeres en Bielorrusia."
+    "description": "Fotos para mujeres, parejas y familiares. Sesiones fotográficas en Bielorrusia."
   },
   "nav": {
     "portfolio": "Portfolio",
@@ -13,7 +13,7 @@
   },
   "hero": {
     "title": "Tu sesión. Tu historia. Tu luz.",
-    "subtitle": "Retratos individuales, parejas, corporativo y eventos · Bielorrusia",
+    "subtitle": "Fotos para mujeres, parejas y familiares · Bielorrusia",
     "ctaInstagram": "Instagram",
     "ctaViber": "Viber",
     "ctaPortfolio": "Ver trabajos"
@@ -23,10 +23,9 @@
     "subtitle": "Selección de trabajos por tipo de sesión",
     "empty": "Próximamente fotos aquí",
     "categories": {
-      "women": "Retratos femeninos",
+      "women": "Mujeres",
       "couples": "Parejas",
-      "corporate": "Corporativo",
-      "events": "Eventos"
+      "family": "Familiares"
     }
   },
   "services": {
@@ -37,7 +36,7 @@
     "items": [
       {
         "id": "women",
-        "title": "Sesión individual",
+        "title": "Fotos para mujeres",
         "price": "150 BYN",
         "includes": ["1–2 h de sesión", "15 fotos editadas", "2 locaciones", "Entrega en 7 días"]
       },
@@ -48,16 +47,10 @@
         "includes": ["2 h de sesión", "20 fotos editadas", "Ayuda con estilo", "Entrega en 10 días"]
       },
       {
-        "id": "corporate",
-        "title": "Retrato corporativo",
-        "price": "120 BYN",
-        "includes": ["45 minutos", "10 fotos editadas", "Estilo business o lifestyle", "Entrega en 5 días"]
-      },
-      {
-        "id": "events",
-        "title": "Eventos",
-        "price": "250 BYN",
-        "includes": ["Hasta 3 horas", "50+ fotos editadas", "Estilo reportaje", "Entrega en 14 días"]
+        "id": "family",
+        "title": "Sesión familiar",
+        "price": "220 BYN",
+        "includes": ["2 h de sesión", "25 fotos editadas", "Varias locaciones", "Entrega en 10 días"]
       }
     ]
   },
@@ -81,7 +74,7 @@
   "about": {
     "title": "Sobre mí",
     "p1": "Soy Yanela, fotógrafa en Bielorrusia. Fotografío a mujeres como quieren verse — natural, seguras y bellas.",
-    "p2": "Me enfoco en retratos individuales, pero también trabajo con parejas, clientes corporativos y eventos. Cada sesión es una historia que creamos juntas.",
+    "p2": "Trabajo con sesiones para mujeres, parejas y familiares. Cada sesión es una historia que creamos juntas.",
     "instagram": "@yanela_her.ph"
   },
   "faq": {
@@ -97,7 +90,7 @@
       },
       {
         "question": "¿Cuánto tardan las fotos?",
-        "answer": "Entre 5 y 14 días según el paquete. Lo acordamos de antemano."
+        "answer": "Entre 7 y 10 días según el paquete. Lo acordamos de antemano."
       },
       {
         "question": "¿Qué debo llevar?",

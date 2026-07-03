@@ -1,6 +1,6 @@
 export type Locale = "ru" | "en" | "es";
 
-export type PortfolioCategory = "women" | "couples" | "corporate" | "events";
+export type PortfolioCategory = "women" | "couples" | "family";
 
 export interface FAQItem {
   question: string;

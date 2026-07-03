@@ -14,7 +14,7 @@ export function Hero() {
 
       <section id="hero" className={styles.hero}>
         <div className={`section-inner ${styles.content}`}>
-          <p className="eyebrow">Yanela Hernández · Photo</p>
+          <p className="eyebrow">Yanela Hernández · Photography</p>
           <h1>{t.hero.title}</h1>
           <p className={styles.subtitle}>{t.hero.subtitle}</p>
 

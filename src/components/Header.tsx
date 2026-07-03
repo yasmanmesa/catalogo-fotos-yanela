@@ -40,7 +40,7 @@ export function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={styles.inner}>
         <a href="#" className={styles.logo}>
-          Yanela
+          Yanela_her.ph
         </a>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`} aria-label="Main">
