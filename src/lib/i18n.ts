@@ -22,7 +22,7 @@ export function isLocale(value: string): value is Locale {
 }
 
 export const INSTAGRAM_URL = "https://www.instagram.com/yanela_her.ph/";
-export const VIBER_NUMBER: string = ""; // TBD — añadir número de Yanela
+export const VIBER_NUMBER = "+375 33 622 6254";
 export const VIBER_URL = VIBER_NUMBER
   ? `viber://chat?number=${VIBER_NUMBER.replace(/\D/g, "")}`
   : "#contacto";
