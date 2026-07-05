@@ -113,11 +113,12 @@ export function Header() {
 
           <button
             type="button"
-            className={styles.menuBtn}
+            className={`${styles.menuBtn} ${menuOpen ? styles.menuBtnOpen : ""}`}
             aria-expanded={menuOpen}
             aria-label="Menu"
             onClick={() => setMenuOpen((o) => !o)}
           >
+            <span />
             <span />
             <span />
           </button>
