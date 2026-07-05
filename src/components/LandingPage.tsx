@@ -1,5 +1,6 @@
 "use client";
 
+import type { PortfolioItem } from "@/lib/types";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { Portfolio } from "./Portfolio";
@@ -10,13 +11,13 @@ import { FAQ } from "./FAQ";
 import { Contact } from "./Contact";
 import { Footer } from "./Footer";
 
-export function LandingPage() {
+export function LandingPage({ portfolioItems }: { portfolioItems: PortfolioItem[] }) {
   return (
     <>
       <Header />
       <main>
         <Hero />
-        <Portfolio />
+        <Portfolio items={portfolioItems} />
         <Services />
         <Process />
         <About />

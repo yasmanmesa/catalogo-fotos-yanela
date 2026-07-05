@@ -1,39 +1,40 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocale } from "@/context/LocaleContext";
-import { PORTFOLIO_ITEMS } from "@/lib/constants";
-import type { PortfolioCategory } from "@/lib/types";
+import type { PortfolioCategory, PortfolioItem } from "@/lib/types";
 import styles from "./Portfolio.module.css";
 
 const CATEGORIES: PortfolioCategory[] = ["women", "couples", "family"];
 
-const AVAILABLE_CATEGORIES = CATEGORIES.filter((cat) =>
-  PORTFOLIO_ITEMS.some((item) => item.category === cat),
-);
-
-export function Portfolio() {
+export function Portfolio({ items }: { items: PortfolioItem[] }) {
   const { t } = useLocale();
+
+  const availableCategories = useMemo(
+    () => CATEGORIES.filter((cat) => items.some((item) => item.category === cat)),
+    [items],
+  );
+
   const [active, setActive] = useState<PortfolioCategory>(
-    AVAILABLE_CATEGORIES[0] ?? "women",
+    availableCategories[0] ?? "women",
   );
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const items = PORTFOLIO_ITEMS.filter((p) => p.category === active);
+  const categoryItems = items.filter((p) => p.category === active);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
 
   const goNext = useCallback(() => {
-    setLightboxIndex((i) => (i === null ? null : (i + 1) % items.length));
-  }, [items.length]);
+    setLightboxIndex((i) => (i === null ? null : (i + 1) % categoryItems.length));
+  }, [categoryItems.length]);
 
   const goPrev = useCallback(() => {
     setLightboxIndex((i) =>
-      i === null ? null : (i - 1 + items.length) % items.length,
+      i === null ? null : (i - 1 + categoryItems.length) % categoryItems.length,
     );
-  }, [items.length]);
+  }, [categoryItems.length]);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -61,9 +62,9 @@ export function Portfolio() {
           <p>{t.portfolio.subtitle}</p>
         </header>
 
-        {AVAILABLE_CATEGORIES.length > 1 && (
+        {availableCategories.length > 1 && (
           <div className={styles.tabs} role="tablist">
-            {AVAILABLE_CATEGORIES.map((cat) => (
+            {availableCategories.map((cat) => (
               <button
                 key={cat}
                 type="button"
@@ -81,11 +82,11 @@ export function Portfolio() {
           </div>
         )}
 
-        {items.length === 0 ? (
+        {categoryItems.length === 0 ? (
           <p className={styles.empty}>{t.portfolio.empty}</p>
         ) : (
           <ul className={styles.grid}>
-            {items.map((item, index) => (
+            {categoryItems.map((item, index) => (
               <li key={item.id}>
                 <button
                   type="button"
@@ -109,12 +110,12 @@ export function Portfolio() {
         )}
       </div>
 
-      {lightboxIndex !== null && items[lightboxIndex] && (
+      {lightboxIndex !== null && categoryItems[lightboxIndex] && (
         <div
           className={styles.lightbox}
           role="dialog"
           aria-modal="true"
-          aria-label={items[lightboxIndex].alt}
+          aria-label={categoryItems[lightboxIndex].alt}
           onClick={closeLightbox}
         >
           <div className={styles.lightboxInner} onClick={(e) => e.stopPropagation()}>
@@ -126,8 +127,8 @@ export function Portfolio() {
             </button>
             <div className={styles.lightboxImage}>
               <Image
-                src={items[lightboxIndex].src}
-                alt={items[lightboxIndex].alt}
+                src={categoryItems[lightboxIndex].src}
+                alt={categoryItems[lightboxIndex].alt}
                 fill
                 sizes="85vw"
                 className={styles.lightboxPhoto}
@@ -138,7 +139,7 @@ export function Portfolio() {
               ›
             </button>
             <p className={styles.counter}>
-              {lightboxIndex + 1} / {items.length}
+              {lightboxIndex + 1} / {categoryItems.length}
             </p>
           </div>
         </div>
