@@ -81,7 +81,13 @@
   }
 
   .photo {
-    justify-self: start;
-    max-width: 14rem;
+    justify-self: stretch;
+    width: 100vw;
+    max-width: 100vw;
+    margin-inline: calc(50% - 50vw);
+  }
+
+  .photoImage {
+    border-radius: 0;
   }
 }

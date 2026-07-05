@@ -18,7 +18,7 @@ export function About() {
             alt="Yanela Hernández"
             width={640}
             height={853}
-            sizes="(max-width: 640px) 14rem, 16rem"
+            sizes="(max-width: 768px) 100vw, 16rem"
             className={styles.photoImage}
           />
         </div>

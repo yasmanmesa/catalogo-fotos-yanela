@@ -104,3 +104,33 @@
   align-self: flex-start;
   font-size: 0.75rem;
 }
+
+@media (max-width: 768px) {
+  .section {
+    height: auto;
+    min-height: var(--viewport-h);
+    padding-bottom: var(--space-section-compact);
+  }
+
+  .section > :global(.section-inner) {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .section > :global(.section-inner) > :global(.section-header) {
+    grid-row: unset;
+    grid-column: unset;
+    align-self: stretch;
+    position: static;
+    z-index: auto;
+    margin-bottom: 0;
+  }
+
+  .grid {
+    grid-row: unset;
+    grid-column: unset;
+    align-self: stretch;
+  }
+}

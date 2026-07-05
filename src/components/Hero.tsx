@@ -47,7 +47,7 @@ export function Hero() {
             alt="Yanela Hernández"
             width={640}
             height={853}
-            sizes="(max-width: 768px) 14rem, 20rem"
+            sizes="(max-width: 768px) 100vw, 20rem"
             className={styles.photoImage}
             priority
           />
