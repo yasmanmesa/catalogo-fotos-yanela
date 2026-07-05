@@ -22,6 +22,7 @@ export interface ProcessStep {
 export interface PortfolioItem {
   id: string;
   category: PortfolioCategory;
+  src: string;
   alt: string;
 }
 

@@ -9,10 +9,12 @@
   align-items: start;
 }
 
-.photoPlaceholder {
+.photoImage {
+  width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
+  object-fit: cover;
   border-radius: var(--radius-lg);
-  background: linear-gradient(165deg, #ddd5c8, #c4b8a8);
   box-shadow: var(--shadow-soft);
 }
 

@@ -1,19 +1,26 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useLocale } from "@/context/LocaleContext";
-import { PORTFOLIO_PLACEHOLDERS } from "@/lib/constants";
+import { PORTFOLIO_ITEMS } from "@/lib/constants";
 import type { PortfolioCategory } from "@/lib/types";
 import styles from "./Portfolio.module.css";
 
 const CATEGORIES: PortfolioCategory[] = ["women", "couples", "family"];
 
+const AVAILABLE_CATEGORIES = CATEGORIES.filter((cat) =>
+  PORTFOLIO_ITEMS.some((item) => item.category === cat),
+);
+
 export function Portfolio() {
   const { t } = useLocale();
-  const [active, setActive] = useState<PortfolioCategory>("women");
+  const [active, setActive] = useState<PortfolioCategory>(
+    AVAILABLE_CATEGORIES[0] ?? "women",
+  );
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const items = PORTFOLIO_PLACEHOLDERS.filter((p) => p.category === active);
+  const items = PORTFOLIO_ITEMS.filter((p) => p.category === active);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -54,23 +61,25 @@ export function Portfolio() {
           <p>{t.portfolio.subtitle}</p>
         </header>
 
-        <div className={styles.tabs} role="tablist">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              role="tab"
-              aria-selected={active === cat}
-              className={`${styles.tab} ${active === cat ? styles.tabActive : ""}`}
-              onClick={() => {
-                setActive(cat);
-                setLightboxIndex(null);
-              }}
-            >
-              {t.portfolio.categories[cat]}
-            </button>
-          ))}
-        </div>
+        {AVAILABLE_CATEGORIES.length > 1 && (
+          <div className={styles.tabs} role="tablist">
+            {AVAILABLE_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                role="tab"
+                aria-selected={active === cat}
+                className={`${styles.tab} ${active === cat ? styles.tabActive : ""}`}
+                onClick={() => {
+                  setActive(cat);
+                  setLightboxIndex(null);
+                }}
+              >
+                {t.portfolio.categories[cat]}
+              </button>
+            ))}
+          </div>
+        )}
 
         {items.length === 0 ? (
           <p className={styles.empty}>{t.portfolio.empty}</p>
@@ -84,7 +93,15 @@ export function Portfolio() {
                   onClick={() => openLightbox(index)}
                   aria-label={item.alt}
                 >
-                  <span className={styles.placeholder} data-index={index + 1} />
+                  <span className={styles.thumbFrame}>
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 640px) 50vw, 14rem"
+                      className={styles.image}
+                    />
+                  </span>
                 </button>
               </li>
             ))}
@@ -108,7 +125,14 @@ export function Portfolio() {
               ‹
             </button>
             <div className={styles.lightboxImage}>
-              <span className={styles.placeholderLarge} />
+              <Image
+                src={items[lightboxIndex].src}
+                alt={items[lightboxIndex].alt}
+                fill
+                sizes="85vw"
+                className={styles.lightboxPhoto}
+                priority
+              />
             </div>
             <button type="button" className={`${styles.navBtn} ${styles.navNext}`} onClick={goNext} aria-label="Next">
               ›
