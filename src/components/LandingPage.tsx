@@ -9,7 +9,6 @@ import { Process } from "./Process";
 import { About } from "./About";
 import { FAQ } from "./FAQ";
 import { Contact } from "./Contact";
-import { Footer } from "./Footer";
 
 export function LandingPage({ portfolioItems }: { portfolioItems: PortfolioItem[] }) {
   return (
@@ -24,7 +23,6 @@ export function LandingPage({ portfolioItems }: { portfolioItems: PortfolioItem[
         <FAQ />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }

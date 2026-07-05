@@ -1,8 +1,31 @@
 .section {
   background: var(--color-bg);
+  height: var(--viewport-h);
+  padding: var(--space-section-compact) var(--space-inline);
+  display: flex;
+  flex-direction: column;
+}
+
+.section > :global(.section-inner) {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 1fr;
+  min-height: 0;
+}
+
+.section > :global(.section-inner) > :global(.section-header) {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: start;
+  position: relative;
+  z-index: 1;
 }
 
 .grid {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   gap: 1.25rem;

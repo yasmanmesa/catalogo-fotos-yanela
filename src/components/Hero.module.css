@@ -1,11 +1,11 @@
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - var(--header-h));
+  min-height: 100dvh;
   display: flex;
   align-items: center;
-  padding-top: calc(var(--header-h) + 2rem);
-  padding-bottom: 4rem;
+  padding-top: var(--header-h);
+  padding-bottom: 2rem;
 }
 
 .backdrop {

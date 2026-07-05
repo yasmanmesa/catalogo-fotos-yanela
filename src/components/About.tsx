@@ -34,7 +34,7 @@ export function About() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`btn btn-outline ${styles.insta}`}
+            className={`btn btn-primary ${styles.insta}`}
           >
             {t.about.instagram}
           </a>

@@ -1,5 +1,6 @@
 .section {
   background: var(--color-surface);
+  padding: var(--space-section-compact) var(--space-inline);
 }
 
 .tabs {

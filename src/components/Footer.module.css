@@ -42,3 +42,15 @@
   font-size: 0.8rem;
   color: var(--color-text-muted);
 }
+
+.embedded {
+  padding: 1.75rem 0 2rem;
+  border-top: 1px solid rgba(28, 25, 23, 0.08);
+  background: transparent;
+}
+
+.embedded .inner {
+  margin-inline: 0;
+  align-items: flex-start;
+  text-align: left;
+}

@@ -32,7 +32,7 @@ export function Services() {
                   <li key={line}>{line}</li>
                 ))}
               </ul>
-              <a href="#contacto" className={`btn btn-outline ${styles.cta}`}>
+              <a href="#contacto" className={`btn btn-primary ${styles.cta}`}>
                 {t.services.cta}
               </a>
             </li>

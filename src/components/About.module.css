@@ -1,5 +1,9 @@
 .section {
   background: var(--color-bg);
+  min-height: var(--viewport-h);
+  padding: var(--space-section-compact) var(--space-inline);
+  display: grid;
+  align-content: center;
 }
 
 .layout {

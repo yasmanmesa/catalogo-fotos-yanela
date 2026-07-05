@@ -14,7 +14,8 @@ export function Process() {
           <h2>{t.process.title}</h2>
         </header>
 
-        <ol className={styles.steps}>
+        <div className={styles.stepsWrap}>
+          <ol className={styles.steps}>
           {t.process.steps.map((step, index) => (
             <li key={step.title}>
               <span className={styles.num} aria-hidden="true">
@@ -26,7 +27,8 @@ export function Process() {
               </div>
             </li>
           ))}
-        </ol>
+          </ol>
+        </div>
       </div>
     </section>
   );

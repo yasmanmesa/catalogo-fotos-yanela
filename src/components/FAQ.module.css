@@ -1,5 +1,7 @@
 .section {
   background: var(--color-surface);
+  min-height: var(--viewport-h);
+  padding: var(--space-section-compact) var(--space-inline);
 }
 
 .list {

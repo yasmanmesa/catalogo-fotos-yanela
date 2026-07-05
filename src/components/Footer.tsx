@@ -4,11 +4,11 @@ import { useLocale } from "@/context/LocaleContext";
 import { INSTAGRAM_URL, VIBER_URL } from "@/lib/i18n";
 import styles from "./Footer.module.css";
 
-export function Footer() {
+export function Footer({ embedded = false }: { embedded?: boolean }) {
   const { t } = useLocale();
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${embedded ? styles.embedded : ""}`}>
       <div className={styles.inner}>
         <p className={styles.brand}>Yanela Hernández</p>
         <div className={styles.links}>
