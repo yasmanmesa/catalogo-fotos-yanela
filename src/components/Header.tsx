@@ -17,6 +17,39 @@ const NAV = [
 
 const LANG_LABELS: Record<Locale, string> = { ru: "RU", en: "EN", es: "ES" };
 
+function LangSwitcher({
+  locale,
+  setLocale,
+  label,
+  className = "",
+  showLabel = false,
+}: {
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
+  label: string;
+  className?: string;
+  showLabel?: boolean;
+}) {
+  return (
+    <div className={className}>
+      {showLabel && <p className={styles.langLabel}>{label}</p>}
+      <div className={styles.lang} role="group" aria-label={label}>
+        {(["ru", "en", "es"] as Locale[]).map((code) => (
+          <button
+            key={code}
+            type="button"
+            className={`${styles.langBtn} ${locale === code ? styles.langActive : ""}`}
+            onClick={() => setLocale(code)}
+            aria-pressed={locale === code}
+          >
+            {LANG_LABELS[code]}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Header() {
   const { locale, setLocale, t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +70,9 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+    <header
+      className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${menuOpen ? styles.menuOpen : ""}`}
+    >
       <div className={styles.inner}>
         <a href="#" className={styles.logo}>
           Yanela_her.ph
@@ -49,22 +84,23 @@ export function Header() {
               {t.nav[key]}
             </a>
           ))}
+
+          <LangSwitcher
+            locale={locale}
+            setLocale={setLocale}
+            label={t.lang.label}
+            className={styles.langMobile}
+            showLabel
+          />
         </nav>
 
         <div className={styles.actions}>
-          <div className={styles.lang} role="group" aria-label={t.lang.label}>
-            {(["ru", "en", "es"] as Locale[]).map((code) => (
-              <button
-                key={code}
-                type="button"
-                className={`${styles.langBtn} ${locale === code ? styles.langActive : ""}`}
-                onClick={() => setLocale(code)}
-                aria-pressed={locale === code}
-              >
-                {LANG_LABELS[code]}
-              </button>
-            ))}
-          </div>
+          <LangSwitcher
+            locale={locale}
+            setLocale={setLocale}
+            label={t.lang.label}
+            className={styles.langDesktop}
+          />
 
           <a
             href={INSTAGRAM_URL}

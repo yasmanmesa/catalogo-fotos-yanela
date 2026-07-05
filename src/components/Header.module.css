@@ -14,6 +14,11 @@
   box-shadow: var(--shadow-soft);
 }
 
+.menuOpen {
+  background: #ffffff;
+  box-shadow: var(--shadow-soft);
+}
+
 .inner {
   display: flex;
   align-items: center;
@@ -75,6 +80,25 @@
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
   transition: background var(--transition), color var(--transition);
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+}
+
+.langDesktop {
+  display: block;
+}
+
+.langMobile {
+  display: none;
+}
+
+.langLabel {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .langActive {
@@ -109,25 +133,30 @@
   .nav {
     position: fixed;
     inset: var(--header-h) 0 0 0;
+    z-index: 99;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     padding: 2rem var(--space-inline);
     gap: 1.5rem;
-    background: var(--color-surface);
-    transform: translateY(-100%);
-    opacity: 0;
+    background: #ffffff;
+    min-height: calc(100dvh - var(--header-h));
+    box-shadow: var(--shadow-soft);
+    visibility: hidden;
+    transform: translateY(-8px);
     pointer-events: none;
-    transition: transform var(--transition), opacity var(--transition);
+    transition: transform var(--transition), visibility var(--transition);
   }
 
   .navOpen {
+    visibility: visible;
     transform: translateY(0);
-    opacity: 1;
     pointer-events: auto;
   }
 
   .nav a {
     font-size: 1rem;
+    color: var(--color-text);
   }
 
   .menuBtn {
@@ -137,10 +166,29 @@
   .cta {
     display: none;
   }
-}
 
-@media (max-width: 480px) {
-  .lang {
+  .langDesktop {
     display: none;
+  }
+
+  .langMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .langMobile .lang {
+    justify-content: center;
+  }
+
+  .langMobile .langBtn {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.82rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
   }
 }
