@@ -66,11 +66,13 @@
 }
 
 .links :global(.btn) {
-  padding: 0.55rem 1rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.5rem 0.9rem;
   font-size: 0.75rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px), (max-height: 520px) and (orientation: landscape) {
   .section {
     height: var(--viewport-h);
     min-height: var(--viewport-h);
@@ -132,14 +134,14 @@
 
   .links {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     margin-top: auto;
     padding-top: clamp(2rem, 10vh, 4rem);
   }
 
   .links :global(.btn) {
-    width: 100%;
-    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
   }
 
   .footerWrap {
@@ -157,5 +159,69 @@
 
   .footerWrap :global(footer) a:hover {
     color: #fff;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .section {
+    height: auto;
+    min-height: var(--viewport-h);
+    overflow: visible;
+  }
+
+  .shell {
+    min-height: var(--viewport-h);
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .main {
+    flex: none;
+  }
+
+  .content {
+    flex: none;
+  }
+
+  .content :global(.section-header) h2 {
+    font-size: clamp(1.65rem, 4.5vw, 2.1rem);
+  }
+
+  .content :global(.section-header) p {
+    font-size: 0.88rem;
+    margin-top: 0.35rem;
+  }
+
+  .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0.85rem;
+    padding-top: 0;
+    gap: 0.5rem;
+  }
+
+  .links :global(.btn) {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.68rem;
+  }
+
+  .footerWrap {
+    margin-top: 0.75rem;
+  }
+
+  .footerWrap :global(footer) {
+    padding: 0.85rem 0 0;
+  }
+
+  .footerWrap :global(footer) p:first-child {
+    font-size: 1rem;
+  }
+
+  .footerWrap :global(footer) p:last-child {
+    font-size: 0.72rem;
   }
 }
