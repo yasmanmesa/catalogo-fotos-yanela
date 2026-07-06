@@ -146,7 +146,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (max-height: 520px) and (orientation: landscape) {
   .nav {
     position: fixed;
     inset: var(--header-h) 0 0 0;

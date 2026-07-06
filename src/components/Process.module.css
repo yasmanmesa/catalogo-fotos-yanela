@@ -64,7 +64,7 @@
   font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px), (max-height: 520px) and (orientation: landscape) {
   .section {
     height: auto;
     min-height: var(--viewport-h);
@@ -100,5 +100,12 @@
 
   .num {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }

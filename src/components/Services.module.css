@@ -105,7 +105,7 @@
   font-size: 0.75rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px), (max-height: 520px) and (orientation: landscape) {
   .section {
     height: auto;
     min-height: var(--viewport-h);
@@ -132,5 +132,25 @@
     grid-row: unset;
     grid-column: unset;
     align-self: stretch;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .cardHead h3 {
+    font-size: 1.25rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
   }
 }
